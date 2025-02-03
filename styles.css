@@ -1,0 +1,58 @@
+body {
+    display: flex; /*Centers all content horizontally. */
+    justify-content:center; /* Aligns content in the center of the page */
+    align-items: center; /* Align items vertically in the center */
+    height:100vh; /*Set height to 100% of the screen */
+    background-color: #222;
+    
+}
+
+.tarot-container {
+    display:flex;
+    gap:20px; /*Adds space between the cards */
+
+}
+
+.card {
+    width: 150px;
+    height 250px
+    perspective: 10000px; /* Creates a 3D effect when flipping the card. */
+    cursor: pointer; /*Changes the mouse cursor to indicate that the card is clickable.*/
+
+}
+
+.card-inner {
+    width:100%; /* The element will take up 100% of the width of its parent container */
+    height:100%;/* The element will take up 100% of the width of its parent container */
+    position: relative; /* The element stays in its original place */
+    transform-style: preserve-3d;  /*Allows the card to be flipped in 3D space.*/
+    transition: transform 0.6s; /* Makes the flipping animation smooth. */
+}
+
+.card.flip .card-inner {
+    transform:rotateY(180deg);/* When the card has the class .flip, it rotates 180 degrees */
+}
+
+/* This flips the entire card when .flip is added to .card.
+It rotates .card-inner (which contains both the front and back) 180 degrees.
+Since .card-back was already rotated 180 degrees initially, this second rotation now brings it to the front while hiding the .card-front.
+*/
+
+.card-front,
+.card-back {
+    width:100%;
+    height: 100%;
+    position: absolute; /*Makes both the front and back stack on top of each other.*/
+    backface-visibility:hidden; /*Hides the back of the card when it’s facing away.*/
+}
+
+.card-back {
+    transform:rotateY(180deg); /*This hides the card’s front when flipped.*/
+
+}
+
+/* This only rotates the back side of the card before any flipping happens.
+It ensures that the back of the card starts off rotated so that it’s facing away (hidden) initially.
+Without this, the front and back would both be facing the same direction, and you wouldn't get a proper flip effect. */
+
+

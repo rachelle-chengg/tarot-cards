@@ -1,0 +1,30 @@
+<!DOCTYPE html> <!-- Tells browser that this is an HTML 5 file -->
+<html lang="en"> <!-- Specifies the language -->
+    <head><!-- This section contains all the metadata -->
+    
+        <meta charset="UTF-8"> <!-- Ensures that special characters display properly -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This makes the site responsive -->
+        <title> Tarot Card </title>
+        <link rel="stylesheet" href="styles.css"> <!-- This links the right CSS file -->
+    </head>
+<body><!-- This section contains everything visible on the page -->
+    <div class="tarot-container">
+<div class="card" onclick="flipCard(this)"> <!-- This represents a single card, When the user clicks the card, it runs the flipCard() function.
+    this refers to the specific card that was clicked. -->
+    <div class="card-inner"> <!-- This wraps both the front and back of the card.
+        It will be rotated using CSS animations. -->
+        <div class="card-front"> <!-- The face-down side of the tarot card. -->
+            <img src=""back-of-card.jpg" alt="Card Back">
+        </div>
+        <div class="card-back"> <!-- The revealed side of the card.-->
+            <img src="card1.jpg" alt="Card Front">
+                </div>
+    </div>
+
+
+</div>
+    </div>
+    <script src="script.js"></script> <!-- This links the right javascript file -->
+
+</body>
+</html>
