@@ -36,10 +36,10 @@ h1 {
     height: 250px; /* Fixed height */
     perspective: 10000px; /* Creates a 3D effect */
     cursor: pointer; /* Changes the mouse cursor to indicate that the card is clickable */
-    background-color: lightgray; /* For testing purposes */
-    border: 1px solid black; /* Border for visibility */
     flex-shrink: 0; /* Prevents cards from shrinking */
     margin-bottom: 20px; /* Adds space between rows */
+    border-radius: 10px/* Fully round the card to create a circle */
+}
 }
 
 /* For smaller screens (<= 768px), show two cards per row */
