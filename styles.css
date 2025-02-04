@@ -1,20 +1,32 @@
+
+
 body {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     justify-content: center; /* Aligns content in the center of the page */
     align-items: center; /* Align items vertically in the center */
-    min-height: 100vh; /* Ensures the body takes the full height */
+    height: 100vh; /* Set height to 100% of the screen */
     margin: 0; /* Ensure there's no margin around the body */
     background-color: #d7eff9;
     text-align: center; /* Ensures text is centered */
     gap: 20px; /* Adds space between the title and the cards */
 }
 
+
+
 h1 {
-    font-family: 'PixelifySans', sans-serif;
-    color: rgb(0, 0, 0);
-    font-size: 3em;
+    font-family: 'Fredoka-SemiBold', sans-serif;
+    color: #78b0d4;
     margin: 0;
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 3em); /* Fully responsive */
+}
+
+@font-face {
+    font-family: 'Fredoka-SemiBold';
+    src: url('fonts/Fredoka-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* Container for the cards */
@@ -24,7 +36,6 @@ h1 {
     flex-wrap: wrap; /* Allows cards to wrap to the next line */
     justify-content: center; /* Centers all cards */
     width: 100%;
-    margin-bottom: 25%;
     padding: 20px;
     box-sizing: border-box; /* Includes padding in width/height */
     overflow-x: auto; /* Allow horizontal scrolling if the content is too wide */
@@ -37,20 +48,25 @@ h1 {
     perspective: 10000px; /* Creates a 3D effect */
     cursor: pointer; /* Changes the mouse cursor to indicate that the card is clickable */
     flex-shrink: 0; /* Prevents cards from shrinking */
-    margin-bottom: 20px; /* Adds space between rows */
+    margin-bottom: 10px; /* Adds space between rows */
     border-radius: 10px/* Fully round the card to create a circle */
 }
 }
-
 /* For smaller screens (<= 768px), show two cards per row */
 @media (max-width: 768px) {
     .tarot-container {
         justify-content: center; /* Centers cards on smaller screens */
+        
     }
 
     .card {
-        width: 45%; /* 2 cards per row */
+        width: calc(50% - 5px); /* 2 cards per row, accounting for the 20px gap */
         height: auto; /* Adjust height proportionally */
+
+    }
+    h1 {
+        font-size: 1.5rem;
+    
     }
 }
 
@@ -61,40 +77,51 @@ h1 {
     }
 
     .card {
-        width: 90%; /* 1 card per row */
+        width: calc(100% - 10px); /* 1 card per row, accounting for the 20px gap */        
         height: auto; /* Adjust height proportionally */
+        gap: 5px;
+    }
+    h1 {
+
+        font-size: 1rem;
     }
 }
 
-/* Card flip effect */
+
+
+
+
+
 .card-inner {
-    width: 100%; /* The element will take up 100% of the width of its parent container */
-    height: 100%; /* The element will take up 100% of the width of its parent container */
+    width:100%; /* The element will take up 100% of the width of its parent container */
+    height:100%;/* The element will take up 100% of the width of its parent container */
     position: relative; /* The element stays in its original place */
-    transform-style: preserve-3d; /* Allows the card to be flipped in 3D space */
-    transition: transform 0.6s; /* Makes the flipping animation smooth */
+    transform-style: preserve-3d;  /*Allows the card to be flipped in 3D space.*/
+    transition: transform 0.6s; /* Makes the flipping animation smooth. */
 }
 
 .card.flip .card-inner {
-    transform: rotateY(180deg); /* When the card has the class .flip, it rotates 180 degrees */
+    transform:rotateY(180deg);/* When the card has the class .flip, it rotates 180 degrees */
 }
 
 /* This flips the entire card when .flip is added to .card.
-   It rotates .card-inner (which contains both the front and back) 180 degrees.
-   Since .card-back was already rotated 180 degrees initially, this second rotation now brings it to the front while hiding the .card-front. */
+It rotates .card-inner (which contains both the front and back) 180 degrees.
+Since .card-back was already rotated 180 degrees initially, this second rotation now brings it to the front while hiding the .card-front.
+*/
 
 .card-front,
 .card-back {
-    width: 100%;
+    width:100%;
     height: 100%;
-    position: absolute; /* Makes both the front and back stack on top of each other */
-    backface-visibility: hidden; /* Hides the back of the card when it’s facing away */
+    position: absolute; /*Makes both the front and back stack on top of each other.*/
+    backface-visibility:hidden; /*Hides the back of the card when it’s facing away.*/
 }
 
 .card-back {
-    transform: rotateY(180deg); /* This hides the card’s front when flipped */
+    transform:rotateY(180deg); /*This hides the card’s front when flipped.*/
+
 }
 
 /* This only rotates the back side of the card before any flipping happens.
-   It ensures that the back of the card starts off rotated so that it’s facing away (hidden) initially.
-   Without this, the front and back would both be facing the same direction, and you wouldn't get a proper flip effect. */
+It ensures that the back of the card starts off rotated so that it’s facing away (hidden) initially.
+Without this, the front and back would both be facing the same direction, and you wouldn't get a proper flip effect. */
